@@ -7,12 +7,13 @@
 
 
 #include <list>
+#include <iostream>
 #include "Activities.h"
 
 class Register {
 public:
 
-    std::list<Activities> ShowActivitiesByDay(int dayU);
+    std::list<Activities> ShowActivitiesByDay(int dayU);  //ocho
 
     Register() {}
 
@@ -26,6 +27,7 @@ public:
         activities.remove(work);
     }
 
+    void ShowActivitiesByDayStamp(const std::list<Activities> &a);
 
 private:
     std::list<Activities> activities;
