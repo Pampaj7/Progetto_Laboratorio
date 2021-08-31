@@ -7,7 +7,7 @@ int main() {
     Activities palestra(17, 19, 20, "palestra");
     Activities giostra(12, 13, 19, "bruuum");
 
-    Register registro;
+    Register registro("Pietro");
     registro.addActivities(studio);
     registro.addActivities(palestra);
     registro.addActivities(giostra);

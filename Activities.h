@@ -26,11 +26,11 @@ public:
 
     void setDescription(const std::string &description);
 
-    Activities(int start, int anEnd, int day, const std::string &description);
+    Activities(int aNstart, int anEnd, int dayY, const std::string &descriptionn) : start(aNstart), end(anEnd), day(dayY), description(descriptionn) {}
 
     virtual ~Activities() = default;
 
-    bool operator==(const Activities &up) const {
+    bool operator == (const Activities &up) const {
         if (description == up.description)
             return true;
         else

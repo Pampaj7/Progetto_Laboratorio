@@ -13,11 +13,11 @@
 class Register {
 public:
 
-    std::list<Activities> ShowActivitiesByDay(int dayU);  //ocho
-
-    Register() {}
+    Register(const std::string &name) : Owner(name) {}
 
     virtual ~Register() = default;
+
+    std::list<Activities> ShowActivitiesByDay(int dayU);  //ocho
 
     void addActivities(const Activities &work) {
         activities.push_back(work);
@@ -31,6 +31,7 @@ public:
 
 private:
     std::list<Activities> activities;
+    std::string Owner;
 };
 
 
