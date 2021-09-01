@@ -36,7 +36,4 @@ void Activities::setDescription(const std::string &description) {
     Activities::description = description;
 }
 
-Activities::Activities(int start, int anEnd, int day, const std::string &description) : start(start), end(anEnd),
-                                                                                        day(day),
-                                                                                        description(description) {}
 
