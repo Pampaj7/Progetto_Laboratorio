@@ -1,6 +1,14 @@
+
+#define __GXX_ABI_VERSION 1002
+
 #include <iostream>
 #include "Register.h"
 #include "Activities.h"
+#include "MyApp.h"
+#include "View.h"
+
+wxIMPLEMENT_APP(MyApp);
+/*
 
 int main() {
     Activities studio(13, 14, 20, "Studio");
@@ -15,5 +23,8 @@ int main() {
     std::list<Activities> attivitagiornaliera = registro.ShowActivitiesByDay(20);
     registro.ShowActivitiesByDayStamp(attivitagiornaliera);
 
+
+
     return 0;
 }
+*/

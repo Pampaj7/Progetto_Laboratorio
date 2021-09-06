@@ -9,11 +9,12 @@
 #include <list>
 #include <iostream>
 #include "Activities.h"
+#include "Subject.h"
 
-class Register {
+class Register : public Subject {
 public:
-
-    Register(const std::string &name) : Owner(name) {}
+    //AAA must be initialized
+    explicit Register(const std::string &name = "aa") : Owner(name) {}
 
     virtual ~Register() = default;
 
@@ -27,11 +28,33 @@ public:
         activities.remove(work);
     }
 
-    void ShowActivitiesByDayStamp(const std::list<Activities> &a);
+    std::string ShowActivitiesByDayStamp(int dayX);
+
+    const std::string &getOwner() const;
+
+    void setOwner(const std::string &owner);
+
+    const std::list<Activities> &getActivities() const;
+
+    void setActivities(const std::list<Activities> &activities);
+
+    int getData() const {
+        return data;
+    }
+    void setData(const int i);
+
+    virtual void addObserver(Observer* o) override;
+
+    virtual void removeObserver(Observer* o) override;
+
+    virtual void notify() override;
+
 
 private:
     std::list<Activities> activities;
     std::string Owner;
+    std::list<Observer*> observers;
+    int data = 0;
 };
 
 

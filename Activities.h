@@ -10,6 +10,7 @@
 
 class Activities {
 public:
+
     int getStart() const;
 
     void setStart(int start);
@@ -32,9 +33,12 @@ public:
 
     bool operator == (const Activities &up) const {
         if (description == up.description)
-            return true;
-        else
-            return false;
+            if (day == up.day)
+                if (end== up.end)
+                    if(start == up.start)
+                        return true;
+
+    return false;
     }
 
 private:
