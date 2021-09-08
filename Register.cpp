@@ -3,6 +3,7 @@
 //
 
 #include "Register.h"
+#include <wx/string.h>
 
 std::list<Activities> Register::ShowActivitiesByDay(int dayU) {
     std::list<Activities> activitiesByDay;
@@ -12,14 +13,15 @@ std::list<Activities> Register::ShowActivitiesByDay(int dayU) {
     return activitiesByDay;
 }
 
-std::string Register::ShowActivitiesByDayStamp(int dayX) {
-    std::list <Activities> activitiees;
-    std::string list;
-    activitiees = ShowActivitiesByDay(dayX);
-    for (auto itr:activitiees) {
-        list += itr.getDescription() + "\n";
+wxString Register::ShowActivitiesByDayStamp(int dayX) {
+    std::list<Activities> activitybyday;
+    std::string lista;
+    activitybyday = ShowActivitiesByDay(dayX);
+    for (auto itr: activitybyday) {
+        lista += itr.getDescription() + "\n";
     }
-    return list;
+    wxString mystring(lista);
+    return mystring;
 }
 
 const std::string &Register::getOwner() const {

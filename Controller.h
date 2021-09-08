@@ -11,8 +11,7 @@
 class Controller {
 public:
     Controller(Register* m) : model(m) {}
-    void increment();
-    void decrement();
+    void Run();
 private:
     Register* model;
 };

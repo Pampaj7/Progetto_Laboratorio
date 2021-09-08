@@ -10,6 +10,7 @@
 #include <iostream>
 #include "Activities.h"
 #include "Subject.h"
+#include<wx/string.h>
 
 class Register : public Subject {
 public:
@@ -28,7 +29,7 @@ public:
         activities.remove(work);
     }
 
-    std::string ShowActivitiesByDayStamp(int dayX);
+    wxString ShowActivitiesByDayStamp(int dayX);
 
     const std::string &getOwner() const;
 

@@ -15,7 +15,7 @@ public:
     virtual bool OnInit() {
         Register* model = new Register;
         Controller* controller = new Controller(model);
-        View *frame = new View(model, controller, NULL, wxID_ANY, "MVC Example" );
+        View *frame = new View(model, controller, NULL, wxID_ANY, "Progetto_Laboratorio" );
         frame->Show( true );
         return true;
     }
