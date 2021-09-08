@@ -30,14 +30,15 @@ public:
 private:
     Register* model;
     Controller* controller;
-    wxStaticText* staticText;
-    wxTextCtrl* textCtrl;
-    wxTextCtrl* textCtrlinput;
+    wxStaticText* staticTextList;
+    wxStaticText* staticTextDay;
+    wxTextCtrl* textCtrlOutput;
+    wxTextCtrl* textCtrlInput;
+    wxButton* clickButton;
 
 
-    wxButton* runButton;
+    virtual void onIncrementButtonClick( wxCommandEvent& event );
 
-    virtual void onRunButtonClick(wxCommandEvent& event);
 
 };
 

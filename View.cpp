@@ -5,58 +5,83 @@
 #include "View.h"
 #include <wx/panel.h>
 
-View::View(Register *model, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title,const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
-    this->model = model; //bo
+View::View(Register *model, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title,
+           const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
+    this->model = model;
     this->model->addObserver(this);
     this->controller = controller;
 
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
-    wxBoxSizer *frameSizer;
-    frameSizer = new wxBoxSizer(wxHORIZONTAL);
+    //BoxSizer Output
+    wxSizer *frameSizerOutput;
+    frameSizerOutput = new wxBoxSizer(wxHORIZONTAL);
+
+    staticTextList = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticTextList->Wrap(-1);
+    frameSizerOutput->Add(staticTextList, 0, wxLEFT | wxRIGHT, 17);
+
+    textCtrlOutput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    frameSizerOutput->Add(textCtrlOutput, 0, wxLEFT | wxRIGHT, 10);
+
+    //BoxSizer Input
+    wxSizer *frameSizerInput;
+    frameSizerInput = new wxBoxSizer(wxHORIZONTAL);
+
+    staticTextDay = new wxStaticText(this, wxID_ANY, wxT("giorno attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticTextDay->Wrap(-1);
+    frameSizerInput->Add(staticTextDay, 0, wxLEFT | wxRIGHT, 10);
+
+    textCtrlInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    frameSizerInput->Add(textCtrlInput, 0, wxLEFT | wxRIGHT, 10);
+
+    //BoxSizer Bottone
+    wxSizer *buttonSizer;
+    buttonSizer = new wxBoxSizer(wxVERTICAL);
+
+    clickButton = new wxButton(this, wxID_ANY, wxT("cerca"), wxDefaultPosition, wxDefaultSize, 0);
+    buttonSizer->Add(clickButton, 0, wxALIGN_CENTER | wxUP | wxRIGHT, 10);
+
+    //Nidificazione Boxsizer
+    wxSizer *inputOutputSizer;
+    inputOutputSizer = new wxBoxSizer(wxVERTICAL);
+    inputOutputSizer->Add(frameSizerInput, 1, wxUP, 10);
+    inputOutputSizer->Add(frameSizerOutput, 1, wxUP, 10);
+
+    wxBoxSizer *allSizer;
+    allSizer = new wxBoxSizer(wxHORIZONTAL);
+    allSizer->Add(inputOutputSizer, 1, wxALL, 5);
+    allSizer->Add(buttonSizer, 1, wxALL, 5);
 
 
-    staticText = new wxStaticText(this, wxID_ANY, wxT("Lista Attività"), wxDefaultPosition, wxDefaultSize, 0);
-    staticText->Wrap(-1); // il wrap aggiusta da sè la dimensione del testo
-    frameSizer->Add(staticText, 0, wxALL, 5); //lista attività
-
-
-    textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizer->Add(textCtrl, 0, wxALL, 5); //finestra output
-/////////////////////////
-    wxBoxSizer *frameSizerInput;
-    frameSizerInput = new wxBoxSizer(wxVERTICAL);
-
-    textCtrlinput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizerInput->Add(textCtrlinput, 10, wxALL, 15);
-
-   wxBoxSizer *checkButton;
-   checkButton = new wxBoxSizer(wxVERTICAL);
-
-   runButton = new wxButton(this, wxID_ANY, wxT("Invio"), wxDefaultPosition, wxDefaultSize, 0);
-
-    this->SetSizer(frameSizer);
+    this->SetSizer(allSizer);
     this->Layout();
 
     this->Centre(wxBOTH);
+
+    // Connect Events
+    clickButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(View::onIncrementButtonClick), NULL,
+                         this);
+
     update();
 }
 
-void View::onRunButtonClick(wxCommandEvent &event) {
-   //  controller->
-}
-
-
 
 View::~View() {
+    clickButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(View::onIncrementButtonClick), NULL,
+                            this);
 
     model->removeObserver(this);
 }
 
 void View::update() {
     int giorno;
-    giorno = wxAtoi(textCtrlinput->GetValue()); //da capire quale
+    giorno = wxAtoi(textCtrlInput->GetValue());
     wxString value = model->ShowActivitiesByDayStamp(giorno);
-    textCtrl->ChangeValue(value);
+    textCtrlOutput->ChangeValue(value);
 }
 
+
+void View::onIncrementButtonClick(wxCommandEvent &event) {
+    controller->Click();
+}

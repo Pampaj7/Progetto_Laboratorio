@@ -5,6 +5,9 @@
 #include "Controller.h"
 
 
-void Controller::Run() {
-
+void Controller::Click() {
+    int value = model->getData();
+    value++;
+    model->setData(value);
 }
+

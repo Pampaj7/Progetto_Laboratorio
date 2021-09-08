@@ -11,7 +11,7 @@
 class Controller {
 public:
     Controller(Register* m) : model(m) {}
-    void Run();
+    void Click();
 private:
     Register* model;
 };
