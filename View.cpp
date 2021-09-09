@@ -13,36 +13,32 @@ View::View(Register *model, Controller *controller, wxWindow *parent, wxWindowID
 
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
-    //BoxSizer Output
     wxSizer *frameSizerOutput;
     frameSizerOutput = new wxBoxSizer(wxHORIZONTAL);
 
-    staticTextList = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticTextList = new wxStaticText(this, wxID_ANY, wxT("Attività giornaliere"), wxDefaultPosition, wxDefaultSize, 0);
     staticTextList->Wrap(-1);
-    frameSizerOutput->Add(staticTextList, 0, wxLEFT | wxRIGHT, 17);
+    frameSizerOutput->Add(staticTextList, 0, wxLEFT | wxRIGHT, 20);
 
     textCtrlOutput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
     frameSizerOutput->Add(textCtrlOutput, 0, wxLEFT | wxRIGHT, 10);
 
-    //BoxSizer Input
     wxSizer *frameSizerInput;
     frameSizerInput = new wxBoxSizer(wxHORIZONTAL);
 
-    staticTextDay = new wxStaticText(this, wxID_ANY, wxT("giorno attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticTextDay = new wxStaticText(this, wxID_ANY, wxT("Inserisci il giorno"), wxDefaultPosition, wxDefaultSize, 0);
     staticTextDay->Wrap(-1);
     frameSizerInput->Add(staticTextDay, 0, wxLEFT | wxRIGHT, 10);
 
     textCtrlInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
     frameSizerInput->Add(textCtrlInput, 0, wxLEFT | wxRIGHT, 10);
 
-    //BoxSizer Bottone
     wxSizer *buttonSizer;
     buttonSizer = new wxBoxSizer(wxVERTICAL);
 
-    clickButton = new wxButton(this, wxID_ANY, wxT("cerca"), wxDefaultPosition, wxDefaultSize, 0);
+    clickButton = new wxButton(this, wxID_ANY, wxT("Mostra impegni"), wxDefaultPosition, wxDefaultSize, 0);
     buttonSizer->Add(clickButton, 0, wxALIGN_CENTER | wxUP | wxRIGHT, 10);
 
-    //Nidificazione Boxsizer
     wxSizer *inputOutputSizer;
     inputOutputSizer = new wxBoxSizer(wxVERTICAL);
     inputOutputSizer->Add(frameSizerInput, 1, wxUP, 10);
@@ -74,10 +70,6 @@ void View::update() {
     giorno = wxAtoi(textCtrlInput->GetValue());
     wxString value = model->ShowActivitiesByDayStamp(giorno);
     textCtrlOutput->ChangeValue(value);
-    /*wxString giorno;
-    giorno = textCtrlInput->GetValue();
-    textCtrlOutput->ChangeValue(giorno);*/
-
 }
 
 

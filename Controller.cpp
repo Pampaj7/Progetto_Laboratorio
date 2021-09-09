@@ -6,7 +6,6 @@
 
 
 void Controller::Click() {
-   // aRegister->ShowActivitiesByDayStamp(20);
    aRegister->setData(1);
 }
 
