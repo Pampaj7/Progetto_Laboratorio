@@ -10,10 +10,12 @@
 
 class Controller {
 public:
-    Controller(Register* m) : model(m) {}
+
+    Controller(Register* m) : aRegister(m) {}
     void Click();
+
 private:
-    Register* model;
+    Register* aRegister;
 };
 
 

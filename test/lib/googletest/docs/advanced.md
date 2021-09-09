@@ -860,7 +860,7 @@ will output XML like this:
 
 googletest creates a new test fixture object for each test in order to make
 tests independent and easier to debug. However, sometimes tests use resources
-that are expensive to set up, making the one-copy-per-test model prohibitively
+that are expensive to set up, making the one-copy-per-test aRegister prohibitively
 expensive.
 
 If the tests don't change the resource, there's no harm in their sharing a

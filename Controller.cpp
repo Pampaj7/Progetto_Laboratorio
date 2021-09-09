@@ -6,8 +6,7 @@
 
 
 void Controller::Click() {
-    int value = model->getData();
-    value++;
-    model->setData(value);
+   // aRegister->ShowActivitiesByDayStamp(20);
+   aRegister->setData(1);
 }
 

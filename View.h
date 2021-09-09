@@ -37,7 +37,7 @@ private:
     wxButton* clickButton;
 
 
-    virtual void onIncrementButtonClick( wxCommandEvent& event );
+    virtual void onClickButton(wxCommandEvent& event );
 
 
 };

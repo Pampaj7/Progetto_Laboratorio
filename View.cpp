@@ -59,29 +59,28 @@ View::View(Register *model, Controller *controller, wxWindow *parent, wxWindowID
 
     this->Centre(wxBOTH);
 
-    // Connect Events
-    clickButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(View::onIncrementButtonClick), NULL,
-                         this);
+    clickButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(View::onClickButton), NULL,this);
 
-    update();
 }
 
 
 View::~View() {
-    clickButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(View::onIncrementButtonClick), NULL,
-                            this);
-
+    clickButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(View::onClickButton), NULL,this);
     model->removeObserver(this);
 }
 
 void View::update() {
-    int giorno;
+   int giorno =20;
     giorno = wxAtoi(textCtrlInput->GetValue());
     wxString value = model->ShowActivitiesByDayStamp(giorno);
     textCtrlOutput->ChangeValue(value);
+    /*wxString giorno;
+    giorno = textCtrlInput->GetValue();
+    textCtrlOutput->ChangeValue(giorno);*/
+
 }
 
 
-void View::onIncrementButtonClick(wxCommandEvent &event) {
+void View::onClickButton(wxCommandEvent &event) {
     controller->Click();
 }
