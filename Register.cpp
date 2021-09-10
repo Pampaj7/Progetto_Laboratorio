@@ -51,3 +51,21 @@ void Register::removeObserver(Observer* o) {
     observers.remove(o);
 }
 
+bool Register::isEmpty() {
+    {
+        int i=0;
+        for (auto itr:activities)
+        {
+            i++;
+        }
+        if (i == 0)
+            return true;
+        else
+            return false;
+    }
+}
+
+int Register::getData() const {
+    return data;
+}
+

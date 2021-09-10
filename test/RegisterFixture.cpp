@@ -7,6 +7,7 @@
 class RegisterSuite : public ::testing::Test {
 
 protected:
+
     virtual void setUp() {
         Activities a(12, 13, 5, "powerlifting");
         Activities b(21, 23, 11, "Gara");
@@ -19,14 +20,22 @@ protected:
 };
 
 TEST_F(RegisterSuite, TestOwner) {
-    ASSERT_EQ("Pampaj", R.getOwner()); // register must have c'tor initialized
+    R.setOwner("pampaj-junior");
+    ASSERT_EQ("pampaj-junior", R.getOwner()); // register must have c'tor initialized
 }
 
 TEST_F(RegisterSuite, TestAddActivities) {
-    Activities a(12, 13, 5, "powerlifting");
-    R.addActivities(a);
-   // ASSERT_EQ("powerlifting", R.)
+    //Activities b(21, 23, 11, "Gara");
+    //R.addActivities(b); //check
+    ASSERT_EQ(true, R.isEmpty());
 }
+
+TEST_F(RegisterSuite, testdata) {
+    R.setData(1);
+    ASSERT_EQ(1, R.getData());
+}
+
+
 //33 min del 21
 
 
