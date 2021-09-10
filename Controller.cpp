@@ -5,7 +5,7 @@
 #include "Controller.h"
 
 
-void Controller::Click() {
+void Controller::ClickSearch() {
    aRegister->setData(1);
 }
 

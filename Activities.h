@@ -11,7 +11,7 @@
 class Activities {
 public:
 
-    int getStart() const;
+    int getAStart() const;
 
     int getAnEnd() const;
 

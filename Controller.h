@@ -11,8 +11,8 @@
 class Controller {
 public:
 
-    Controller(Register* m) : aRegister(m) {}
-    void Click();
+    explicit Controller(Register* m) : aRegister(m) {}
+    void ClickSearch();
 
 private:
     Register* aRegister;

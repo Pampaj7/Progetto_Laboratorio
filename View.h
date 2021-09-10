@@ -23,21 +23,20 @@
 
 class View : public wxFrame, public Observer {
 public:
-    View(Register* model, Controller* controller, wxWindow* parent=NULL, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+    View(Register* pRegister, Controller* controller, wxWindow* parent=NULL, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300 ), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL );
     virtual ~View();
     virtual void update() override;
 
 private:
-    Register* model;
+    Register* aRegister;
     Controller* controller;
     wxStaticText* staticTextList;
     wxStaticText* staticTextDay;
-    wxTextCtrl* textCtrlOutput;
     wxTextCtrl* textCtrlInput;
-    wxButton* clickButton;
+    wxTextCtrl* textCtrlOutput;
+    wxButton* clickSearchButton;
 
-
-    virtual void onClickButton(wxCommandEvent& event );
+    virtual void onClickSearchButton(wxCommandEvent& event );
 
 
 };

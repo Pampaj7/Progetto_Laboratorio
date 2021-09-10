@@ -12,11 +12,12 @@
 
 class MyApp : public wxApp {
 public:
+
     bool OnInit() override {
 
-        Activities studio(13, 14, 20, "Studio");
-        Activities palestra(17, 19, 20, "palestra");
-        Activities giostra(12, 13, 19, "Giostra");
+        Activities work(13, 14, 20, "Work");
+        Activities gym(17, 19, 20, "Gym");
+        Activities drink(12, 13, 19, "Drink");
         Activities pranzo(2, 3, 3, "Pranzo");
         Activities cena(2, 3, 4, "Cena");
         Activities merenda(1, 4, 20, "Merenda");
@@ -25,9 +26,9 @@ public:
 
         auto* model = new Register;
 
-        model->addActivities(studio);
-        model->addActivities(palestra);
-        model->addActivities(giostra);
+        model->addActivities(work);
+        model->addActivities(gym);
+        model->addActivities(drink);
         model->addActivities(pranzo);
         model->addActivities(cena);
         model->addActivities(merenda);

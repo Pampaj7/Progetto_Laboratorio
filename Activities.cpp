@@ -4,7 +4,7 @@
 
 #include "Activities.h"
 
-int Activities::getStart() const {
+int Activities::getAStart() const {
     return start;
 }
 

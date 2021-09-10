@@ -15,23 +15,7 @@
 class Register : public Subject {
 public:
 
-    explicit Register(const std::string &name = "aa") : Owner(name) {}
-
-    virtual ~Register() = default;
-
-    std::list<Activities> ShowActivitiesByDay(int dayU);
-
-    void addActivities(const Activities &work) {
-        activities.push_back(work);
-    }
-
-    wxString ShowActivitiesByDayStamp(int dayX);
-
-    const std::string &getOwner() const;
-
-    void setOwner(const std::string &owner);
-
-    void setData(const int i);
+    explicit Register(const std::string &name = "") : Owner(name) {}
 
     virtual void addObserver(Observer* o) override;
 
@@ -39,6 +23,19 @@ public:
 
     virtual void notify() override;
 
+    virtual ~Register() = default;
+
+    void addActivities(const Activities &work) {
+        activities.push_back(work);
+    }
+
+    wxString showActivitiesByDay(int dayX);
+
+    const std::string &getOwner() const;
+
+    void setOwner(const std::string &owner);
+
+    void setData(int i);
 
 private:
     std::list<Activities> activities;

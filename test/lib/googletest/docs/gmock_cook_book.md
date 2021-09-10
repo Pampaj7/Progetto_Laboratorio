@@ -2639,11 +2639,11 @@ versus
 ```cpp
 using ::testing::Action;
 ...
-  Action<int()> Click = IncrementCounter(0);
+  Action<int()> ClickSearch = IncrementCounter(0);
   EXPECT_CALL(foo, DoThis())
-      .WillRepeatedly(Click);
+      .WillRepeatedly(ClickSearch);
   EXPECT_CALL(foo, DoThat())
-      .WillRepeatedly(Click);
+      .WillRepeatedly(ClickSearch);
   foo.DoThis();  // Returns 1.
   foo.DoThis();  // Returns 2.
   foo.DoThat();  // Returns 3 - the counter is shared.

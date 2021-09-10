@@ -8,7 +8,7 @@ find_package(wxWidgets REQUIRED COMPONENTS net core base)
 include(${wxWidgets_USE_FILE})
 
 
-set(SOURCE_FILES Activities.cpp Activities.h Register.cpp Register.h MyApp.cpp MyApp.h View.h View.cpp Observer.h Subject.h Controller.cpp Controller.h)
+set(SOURCE_FILES Activities.cpp Activities.h Register.cpp Register.h MyApp.h View.h View.cpp Observer.h Subject.h Controller.cpp Controller.h)
 add_executable(Progetto_Laboratorio main.cpp)
 ADD_LIBRARY(core ${SOURCE_FILES})
 target_link_libraries(Progetto_Laboratorio core ${wxWidgets_LIBRARIES})

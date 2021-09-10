@@ -1706,7 +1706,7 @@ class FunctionMocker<R(Args...)> final : public UntypedFunctionMockerBase {
     }
 
     // This line must be done before calling GetActionForArguments(),
-    // which will Click the call count for *exp and thus affect
+    // which will ClickSearch the call count for *exp and thus affect
     // its saturation status.
     *is_excessive = exp->IsSaturated();
     const Action<F>* action = exp->GetActionForArguments(this, args, what, why);

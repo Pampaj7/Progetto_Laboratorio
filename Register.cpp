@@ -4,26 +4,26 @@
 
 #include "Register.h"
 
-std::list<Activities> Register::ShowActivitiesByDay(int dayU) {
+wxString Register::showActivitiesByDay(int dayX) {
+
     std::list<Activities> activitiesByDay;
-    for (const auto& itr:activities) {
-        if (itr.getDay() == dayU) {
+    std::string lista;
+
+    for (const auto &itr: activities) {
+        if (itr.getDay() == dayX) {
             activitiesByDay.push_back(itr);
         }
     }
-    return activitiesByDay;
-}
 
-wxString Register::ShowActivitiesByDayStamp(int dayX) {
-    std::list<Activities> activitybyday;
-    std::string lista;
-    activitybyday = ShowActivitiesByDay(dayX);
-    for ( const auto& itr: activitybyday) {
+    for (const auto &itr: activitiesByDay) {
         lista += itr.getDescription() + "   ";
     }
-    wxString mystring(lista);
-    return mystring;
+
+    wxString wxString(lista);
+    return wxString;
 }
+
+
 
 const std::string &Register::getOwner() const {
     return Owner;
